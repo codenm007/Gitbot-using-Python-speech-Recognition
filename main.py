@@ -49,6 +49,10 @@ def exec_command(voice_data):
         os.system("git pull origin master")
         engine.say(read_out_data["pull"])
         engine.runAndWait()
+    if there_exists(comprehensions_data["status"],voice_data):
+        os.system("git status")
+        engine.say(read_out_data["status"])
+        engine.runAndWait()
 
 
 #function to match if anything is matching

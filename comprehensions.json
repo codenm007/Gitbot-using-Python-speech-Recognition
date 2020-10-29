@@ -3,7 +3,8 @@
   "initialise repo": ["empty repo","initialise"],
   "backup my code" : ["backup","git add all"],
   "commit my code": ["commit"],
-  "push to remote repo":["add to cloud"],
+  "push to remote repo":["add to cloud","cloud"],
   "about": ["about","yourself"],
-  "update": ["update"]
+  "update": ["update"],
+  "status": ["status"]
 }
