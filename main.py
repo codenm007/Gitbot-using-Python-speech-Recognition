@@ -25,6 +25,10 @@ def exec_command(voice_data):
         engine.say("The time is:")
         engine.say(datetime.now().strftime("%I:%M %p"))
         engine.runAndWait()
+    if there_exists(comprehensions_data["initialise repo"],voice_data):
+        os.system("git init")
+        engine.say(read_out_data["git init"])
+        engine.runAndWait()
     if there_exists(comprehensions_data["backup my code"],voice_data):
         os.system("git add .")
         engine.say(read_out_data["git add"])

@@ -1,5 +1,6 @@
 { "what is your name" :["name","your name","tell me your name","hi","hello"],
   "time" : ["time","whats the time","tell me the time"],
+  "initialise repo": ["empty repo","initialise"],
   "backup my code" : ["backup","git add all"],
   "commit my code": ["commit"],
   "push to remote repo":["add to cloud"],
