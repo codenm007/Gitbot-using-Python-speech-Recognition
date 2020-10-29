@@ -2,6 +2,7 @@ import speech_recognition as sr
 import json
 import pyttsx3
 from datetime import datetime
+import os
 engine = pyttsx3.init()
 
 rate = engine.getProperty('rate')   # getting details of current speaking rate
@@ -23,6 +24,8 @@ def comprehension(read_dic):
     return results
 
 
+print(comprehension("name"))
+
 #function to execute
 def exec_command(voice_data):
     meaning = comprehension(voice_data)
@@ -33,11 +36,22 @@ def exec_command(voice_data):
     if meaning == ['time']:
         engine.say(datetime.now())
         engine.runAndWait()
-    if meaning == ['what is your name']:
+    if voice_data == "backup":
+        os.system("git add .")
+        engine.say(read_out_data["git add"])
+        engine.runAndWait()
+    if meaning == ['commit my code']:
         engine.say(read_out_data["sing gariwala"])
         engine.runAndWait()
-
-
+    if meaning == ['upload to cloud']:
+        engine.say(read_out_data["sing gariwala"])
+        engine.runAndWait()
+    if meaning == ['tell me about yourself']:
+        engine.say(read_out_data["sing gariwala"])
+        engine.runAndWait()
+    if meaning == ['update yourself']:
+        engine.say(read_out_data["sing gariwala"])
+        engine.runAndWait()
 
 
 recognition = sr.Recognizer()
@@ -47,9 +61,14 @@ def recognize(selection,number):
         with sr.Microphone() as source:
             print("Say something!")
             audio = recognition.listen(source,timeout=3)
-            voice_data = recognition.recognize_google(audio)
-            print(voice_data)
-            exec_command(voice_data)
+            try:
+                voice_data = recognition.recognize_google(audio)
+                print(voice_data)
+                exec_command(voice_data)
+            except sr.UnknownValueError:
+                engine.say('Sorry, I did not get that')
+            except sr.RequestError:
+                engine.say('Sorry, googles service is down')
 
 
     elif selection == 'offline':
