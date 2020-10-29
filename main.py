@@ -3,6 +3,7 @@ import json
 import pyttsx3
 from datetime import datetime
 import os
+
 engine = pyttsx3.init()
 
 rate = engine.getProperty('rate')   # getting details of current speaking rate
@@ -44,7 +45,7 @@ def exec_command(voice_data):
     if there_exists(comprehensions_data["about"],voice_data):
         engine.say(read_out_data["about"])
         engine.runAndWait()
-    if there_exists(comprehensions_data["what is your name"],voice_data):
+    if there_exists(comprehensions_data["update"],voice_data):
         os.system("git pull origin master")
         engine.say(read_out_data["pull"])
         engine.runAndWait()
@@ -59,6 +60,7 @@ def there_exists(terms,voice_data):
 
 recognition = sr.Recognizer()
 def recognize(selection,number):
+
     engine.setProperty('voice', voices[number].id)  # changing index, changes voices. 1 for female and 0 for male
     if selection == 'google':
         with sr.Microphone() as source:
@@ -83,5 +85,3 @@ def recognize(selection,number):
             exec_command(voice_data)
     else:
         print('Invalid selection!')
-
-recognize('google',0)
