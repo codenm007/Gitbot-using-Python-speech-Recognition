@@ -1,5 +1,9 @@
 {
   "name": "Hi, my name is Viki ! How can I help you?",
   "about": "I am Viki, an artificially intelligent git bot, I will help you during writing you code I will backup files do whatever you want , commit code and maintain your code so that you never lost it !",
-  "git add": "added all pending files to repo"
+  "git add": "added all pending files to repo",
+  "commit": "I have committed your code !",
+  "remote_repo": "I have pushed code to remote repo",
+  "pull": "I have pull the code from origin master"
+
 }
