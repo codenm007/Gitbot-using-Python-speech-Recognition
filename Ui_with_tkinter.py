@@ -27,42 +27,6 @@ def openSetdirectory():
 
 
 
-def openGithubaccount():
-    global microphone
-    root3 = Toplevel()
-    root3.title('Voice control git management system')
-    root3.iconbitmap('icon.ico')
-
-    microphone = ImageTk.PhotoImage(Image.open("icons8-account-100.png"))
-    label_open_github_account = Label(root3, image=microphone)
-    label_open_github_account.grid(row=1, column=1)
-
-    label_github_account = Label(root3, text='Enter your github repo:')
-    label_github_account.grid(row=2, column=1, padx=10, pady=10)
-
-    entry_github_account = Entry(root3, width=50)
-    entry_github_account.grid(row=3, column=1, columnspan=4, ipady=8, padx=20, pady=10)
-
-    def get_account():
-        global label_entry
-        global real_github_account
-        global entry_set_account
-        repo= entry_github_account.get()
-        if(repo == ''):
-            messagebox.showinfo("warning!","Please enter your github account !")
-            root3.destroy()
-        else:
-            real_github_account  = repo
-            entry_set_account.insert(0,repo)
-            root3.destroy()
-            #os.system('git init')
-            #os.system('git remote add origin ' + real_github_account)
-            print(real_github_account)
-
-    button_set_account = Button(root3, text='Set', padx=10, pady=10, command=get_account)
-    button_set_account.grid(row=4, column=4, pady=20)
-
-#print(modeValue)
 
 modeValue = 1
 sexType = 1
@@ -70,9 +34,6 @@ sexType = 1
 def saySomething():
     global modeValue
     global sexType
-    #print(sexType)
-    #recognize('google', 1)
-    print(modeValue)
     if(modeValue == 1):
         recognize('google', sexType)
     else:
@@ -81,10 +42,11 @@ def saySomething():
 
 def setAccount():
     # git_account = lambda
-    print(openGithubaccount())
+    openGithubaccount()
 
-button_set_directory = Button(root, text="Set Directory", bg="white", fg="blue",  padx=10, pady=10,command=openSetdirectory)
-button_set_directory.grid(row=0, column=0, padx=10, pady=20)
+
+label0 = Label(root, text='   ')
+label0.grid(row=0, column=0)
 label1 = Label(root, text='   ')
 label1.grid(row=0, column=1, pady=20)
 
@@ -120,7 +82,7 @@ def chooseMode(value):
         modeValue = 1
     else:
         modeValue = 0
-    print(modeValue)
+
 
 choose_mode1 = Radiobutton(root, text="online", variable=m, value=1, command= lambda: chooseMode(m.get()))
 choose_mode1.grid(row=5, column=1)
@@ -136,7 +98,7 @@ def chooseSex(value):
         sexType = 1
     elif(value == 0):
         sexType = 0
-    print(sexType)
+
 
 choose_voice2 = Radiobutton(root, text="Male", variable=s, value=0, command= lambda: chooseSex(s.get()))
 choose_voice2.grid(row=6, column=3)
