@@ -73,7 +73,7 @@ def recognize(selection,number):
     if selection == 'google':
         with sr.Microphone() as source:
             print("Say something!")
-            audio = recognition.listen(source,timeout=3)
+            audio = recognition.listen(source,timeout=2)
             try:
                 voice_data = recognition.recognize_google(audio)
                 print(voice_data.lower())
