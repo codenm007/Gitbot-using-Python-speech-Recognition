@@ -22,37 +22,41 @@ def exec_command(voice_data):
     if there_exists(comprehensions_data["what is your name"],voice_data):
         engine.say(read_out_data["name"])
         engine.runAndWait()
+        return read_out_data["name"]
     if there_exists(comprehensions_data["time"],voice_data):
         engine.say("The time is:")
         engine.say(datetime.now().strftime("%I:%M %p"))
         engine.runAndWait()
-    if there_exists(comprehensions_data["initialise repo"],voice_data):
-        os.system("git init")
-        engine.say(read_out_data["git init"])
-        engine.runAndWait()
+        return datetime.now().strftime("%I:%M %p")
     if there_exists(comprehensions_data["backup my code"],voice_data):
         os.system("git add .")
         engine.say(read_out_data["git add"])
         engine.runAndWait()
+        return read_out_data["git add"]
     if there_exists(comprehensions_data["commit my code"],voice_data):
         os.system('git commit -m "committed by viki the gitbot"')
         engine.say(read_out_data["commit"])
         engine.runAndWait()
+        return read_out_data["commit"]
     if there_exists(comprehensions_data["push to remote repo"],voice_data):
         os.system("git push origin master")
         engine.say(read_out_data["remote_repo"])
         engine.runAndWait()
+        return read_out_data["remote_repo"]
     if there_exists(comprehensions_data["about"],voice_data):
         engine.say(read_out_data["about"])
         engine.runAndWait()
+        return read_out_data["about"]
     if there_exists(comprehensions_data["update"],voice_data):
         os.system("git pull origin master")
         engine.say(read_out_data["pull"])
         engine.runAndWait()
+        return read_out_data["pull"]
     if there_exists(comprehensions_data["status"],voice_data):
         os.system("git status")
         engine.say(read_out_data["status"])
         engine.runAndWait()
+        return read_out_data["status"]
 
 
 #function to match if anything is matching
@@ -73,7 +77,7 @@ def recognize(selection,number):
             try:
                 voice_data = recognition.recognize_google(audio)
                 print(voice_data.lower())
-                exec_command(voice_data.lower())
+                return exec_command(voice_data.lower())
             except sr.UnknownValueError:
                 engine.say('Sorry, I did not get that')
             except sr.RequestError:

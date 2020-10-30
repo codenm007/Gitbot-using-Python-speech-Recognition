@@ -6,6 +6,5 @@
   "commit": "I have committed your code !",
   "remote_repo": "I have pushed code to remote repo",
   "pull": "I have pull the code from origin master",
-  "status": "priinting your status"
-
+  "status": "printing your status"
 }
