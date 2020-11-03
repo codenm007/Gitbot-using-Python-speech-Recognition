@@ -8,6 +8,9 @@
 > * [x] Tkinter
 > * [x] Pillow
 
+###     Working model of our app
+![working-model](./screenshots/image.png)
+
 ###     Features of our app
 
 > * [x] Online recognition
