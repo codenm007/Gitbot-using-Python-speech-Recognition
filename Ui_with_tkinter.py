@@ -13,18 +13,40 @@ root.iconbitmap('icon.ico')
 
 real_github_account = '';
 
+def openGithubaccount():
+    global microphone
+    root3 = Toplevel()
+    root3.title('Voice control git management system')
+    root3.iconbitmap('icon.ico')
 
-def openSetdirectory():
-    root2 = Tk()
-    root2.title('Voice control git management system')
-    root2.iconbitmap('icon.ico')
-    label_set_directory = Label(root2, text='Set Directory:', padx=10, pady=10)
-    label_set_directory.grid(row=1, column=1)
-    entry_set_directory = Entry(root2, width=50)
-    entry_set_directory.grid(row=2, column=1, ipady=8, padx=10,  pady=10)
-    button_set = Button(root2, text='Set', padx=10, pady=10)
-    button_set.grid(row=3, column=1)
+    microphone = ImageTk.PhotoImage(Image.open("icons8-account-100.png"))
+    label_open_github_account = Label(root3, image=microphone)
+    label_open_github_account.grid(row=1, column=1)
 
+    label_github_account = Label(root3, text='Enter your github repo:')
+    label_github_account.grid(row=2, column=1, padx=10, pady=10)
+
+    entry_github_account = Entry(root3, width=50)
+    entry_github_account.grid(row=3, column=1, columnspan=4, ipady=8, padx=20, pady=10)
+
+    def get_account():
+        global label_entry
+        global real_github_account
+        global entry_set_account
+        repo= entry_github_account.get()
+        if(repo == ''):
+            messagebox.showinfo("warning!","Please enter your github account !")
+            root3.destroy()
+        else:
+            real_github_account  = repo
+            entry_set_account.insert(0,repo)
+            root3.destroy()
+            #os.system('git init')
+            #os.system('git remote add origin ' + real_github_account)
+            print(real_github_account)
+
+    button_set_account = Button(root3, text='Set', padx=10, pady=10, command=get_account)
+    button_set_account.grid(row=4, column=4, pady=20)
 
 
 
