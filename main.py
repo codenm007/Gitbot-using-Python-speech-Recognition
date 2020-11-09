@@ -39,7 +39,7 @@ def exec_command(voice_data):
         engine.runAndWait()
         return read_out_data["commit"]
     if there_exists(comprehensions_data["push to remote repo"],voice_data):
-        os.system("git push origin master")
+        os.system("git push user-repo master")
         engine.say(read_out_data["remote_repo"])
         engine.runAndWait()
         return read_out_data["remote_repo"]

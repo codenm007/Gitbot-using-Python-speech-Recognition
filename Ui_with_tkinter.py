@@ -41,8 +41,7 @@ def openGithubaccount():
             real_github_account  = repo
             entry_set_account.insert(0,repo)
             root3.destroy()
-            #os.system('git init')
-            #os.system('git remote add origin ' + real_github_account)
+            os.system('git remote add user-repo ' + real_github_account)
             print(real_github_account)
 
     button_set_account = Button(root3, text='Set', padx=10, pady=10, command=get_account)
