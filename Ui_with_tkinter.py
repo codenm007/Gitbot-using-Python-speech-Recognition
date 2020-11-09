@@ -3,7 +3,7 @@ from PIL import ImageTk,Image
 from main import recognize
 from tkinter import messagebox
 
-
+#choose directory
 import os
 
 root = Tk()
@@ -41,7 +41,8 @@ def openGithubaccount():
             real_github_account  = repo
             entry_set_account.insert(0,repo)
             root3.destroy()
-            os.system('git remote add user-repo ' + real_github_account)
+            os.system('git init')
+            os.system('git remote add origin ' + real_github_account)
             print(real_github_account)
 
     button_set_account = Button(root3, text='Set', padx=10, pady=10, command=get_account)
@@ -55,6 +56,8 @@ sexType = 1
 def saySomething():
     global modeValue
     global sexType
+    path = "C:/Users/nmaju/Documents/Python Scripts"
+    os.chdir(path)
     if(modeValue == 1):
         recognize('google', sexType)
     else:
