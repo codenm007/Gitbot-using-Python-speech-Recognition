@@ -72,15 +72,36 @@ def setAccount():
     # git_account = lambda
     openGithubaccount()
 
+def getHelp():
+    root2 = Toplevel()
+    root2.title('Voice control git management system')
+    root2.iconbitmap('icon.ico')
+
+    label0 = Label(root2, text="what is your name")
+    label1 = Label(root2, text="What's time")
+    label2 = Label(root2, text="status")
+    label3 = Label(root2, text="Add to cloud")
+    label4 = Label(root2, text="commit my code")
+    label5 = Label(root2, text="backup my code")
+    label6 = Label(root2, text="Tell me about yourself")
+    label0.pack()
+    label1.pack()
+    label2.pack()
+    label3.pack()
+    label4.pack()
+    label5.pack()
+    label6.pack()
+
+
 
 label0 = Label(root, text='   ')
 label0.grid(row=0, column=0)
 label1 = Label(root, text='   ')
 label1.grid(row=0, column=1, pady=20)
 
-# directory_image = ImageTk.PhotoImage(Image.open("directory.png"))
-# button_set_directory = Button(root, image=directory_image,padx=3, pady=3, command= setDirectory)
-# button_set_directory.grid(row=0, column=1)
+directory_image = ImageTk.PhotoImage(Image.open("commands.png"))
+button_help = Button(root, image=directory_image,padx=10, pady=10, command= getHelp)
+button_help.grid(row=0, column=1)
 
 
 entry_set_account = Entry(root, width=50)
