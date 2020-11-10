@@ -2,6 +2,7 @@ from tkinter import *
 from PIL import ImageTk,Image
 from main import recognize
 from tkinter import messagebox
+from tkinter import filedialog
 
 #choose directory
 import os
@@ -15,19 +16,21 @@ real_github_account = '';
 
 def setDirectory():
     global microphone
-    root2 = Topsetdirectory()
+    root2 = Toplevel()
     root2.title('Voice control git management system')
     root2.iconbitmap('icon.ico')
 
-    microphone = ImageTk.PhotoImage(Image.open("icons8-account-100.png"))
+    microphone = ImageTk.PhotoImage(Image.open("directory.png"))
     label_open_github_account = Label(root2, image=microphone)
     label_open_github_account.grid(row=1, column=1)
 
-    label_github_account = Label(root2, text='Enter your github repo:')
+    label_github_account = Label(root2, text='Choose where to perform git operations')
     label_github_account.grid(row=2, column=1, padx=10, pady=10)
 
-    entry_github_account = Entry(root2, width=50)
-    entry_github_account.grid(row=3, column=1, columnspan=4, ipady=8, padx=20, pady=10)
+    # entry_github_account = Entry(root2, width=50)
+    #entry_github_account.grid(row=3, column=1, columnspan=4, ipady=8, padx=20, pady=10)
+    folder_selected = filedialog.askdirectory()
+    print(folder_selected)
 
 
     button_set_account = Button(root2, text='Set', padx=10, pady=10)
