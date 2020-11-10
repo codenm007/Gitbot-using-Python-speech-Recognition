@@ -13,28 +13,10 @@ root.iconbitmap('icon.ico')
 #root.geometry("790x800+380+50")
 
 real_github_account = '';
-
+folder_path = ''
 def setDirectory():
-    global microphone
-    root2 = Toplevel()
-    root2.title('Voice control git management system')
-    root2.iconbitmap('icon.ico')
-
-    microphone = ImageTk.PhotoImage(Image.open("directory.png"))
-    label_open_github_account = Label(root2, image=microphone)
-    label_open_github_account.grid(row=1, column=1)
-
-    label_github_account = Label(root2, text='Choose where to perform git operations')
-    label_github_account.grid(row=2, column=1, padx=10, pady=10)
-
-    # entry_github_account = Entry(root2, width=50)
-    #entry_github_account.grid(row=3, column=1, columnspan=4, ipady=8, padx=20, pady=10)
-    folder_selected = filedialog.askdirectory()
-    print(folder_selected)
-
-
-    button_set_account = Button(root2, text='Set', padx=10, pady=10)
-    button_set_account.grid(row=4, column=4, pady=20)
+    global folder_path
+    folder_path = filedialog.askdirectory()
 
 def openGithubaccount():
     global microphone
@@ -79,8 +61,11 @@ sexType = 1
 def saySomething():
     global modeValue
     global sexType
-    path = "C:/Users/nmaju/Documents/Python Scripts"
-    os.chdir(path)
+    global folder_path
+    if(folder_path == ''):
+        setDirectory()
+    else:
+        os.chdir(folder_path)
     if(modeValue == 1):
         recognize('google', sexType)
     else:
@@ -94,9 +79,11 @@ def setAccount():
 
 label0 = Label(root, text='   ')
 label0.grid(row=0, column=0)
-label1 = Label(root, text='   ')
-label1.grid(row=0, column=1, pady=20)
-button_set_directory = Button(root, text="Set Directory", bg="white", fg="blue",padx=10, pady=10, command= setDirectory)
+# label1 = Label(root, text='   ')
+# label1.grid(row=0, column=1, pady=20)
+
+directory_image = ImageTk.PhotoImage(Image.open("directory.png"))
+button_set_directory = Button(root, image=directory_image,padx=3, pady=3, command= setDirectory)
 button_set_directory.grid(row=0, column=1)
 
 
