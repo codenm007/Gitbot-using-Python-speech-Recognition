@@ -13,6 +13,26 @@ root.iconbitmap('icon.ico')
 
 real_github_account = '';
 
+def setDirectory():
+    global microphone
+    root2 = Topsetdirectory()
+    root2.title('Voice control git management system')
+    root2.iconbitmap('icon.ico')
+
+    microphone = ImageTk.PhotoImage(Image.open("icons8-account-100.png"))
+    label_open_github_account = Label(root2, image=microphone)
+    label_open_github_account.grid(row=1, column=1)
+
+    label_github_account = Label(root2, text='Enter your github repo:')
+    label_github_account.grid(row=2, column=1, padx=10, pady=10)
+
+    entry_github_account = Entry(root2, width=50)
+    entry_github_account.grid(row=3, column=1, columnspan=4, ipady=8, padx=20, pady=10)
+
+
+    button_set_account = Button(root2, text='Set', padx=10, pady=10)
+    button_set_account.grid(row=4, column=4, pady=20)
+
 def openGithubaccount():
     global microphone
     root3 = Toplevel()
@@ -73,6 +93,9 @@ label0 = Label(root, text='   ')
 label0.grid(row=0, column=0)
 label1 = Label(root, text='   ')
 label1.grid(row=0, column=1, pady=20)
+button_set_directory = Button(root, text="Set Directory", bg="white", fg="blue",padx=10, pady=10, command= setDirectory)
+button_set_directory.grid(row=0, column=1)
+
 
 entry_set_account = Entry(root, width=50)
 entry_set_account.grid(row=0, column=2, ipady=8)
