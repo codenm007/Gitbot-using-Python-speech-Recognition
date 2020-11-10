@@ -13,7 +13,7 @@ root.iconbitmap('icon.ico')
 #root.geometry("790x800+380+50")
 
 real_github_account = '';
-folder_path = ''
+# folder_path = ''
 # def setDirectory():
 #     global folder_path
 #     folder_path = filedialog.askdirectory()
@@ -40,8 +40,6 @@ def openGithubaccount():
         global entry_set_account
         global folder_path
         repo= entry_github_account.get()
-        if (folder_path == ''):
-            setDirectory()
         if(repo == ''):
             messagebox.showinfo("warning!","Please enter your github account !")
             root3.destroy()
