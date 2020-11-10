@@ -14,9 +14,9 @@ root.iconbitmap('icon.ico')
 
 real_github_account = '';
 folder_path = ''
-def setDirectory():
-    global folder_path
-    folder_path = filedialog.askdirectory()
+# def setDirectory():
+#     global folder_path
+#     folder_path = filedialog.askdirectory()
 
 def openGithubaccount():
     global microphone
@@ -38,7 +38,10 @@ def openGithubaccount():
         global label_entry
         global real_github_account
         global entry_set_account
+        global folder_path
         repo= entry_github_account.get()
+        if (folder_path == ''):
+            setDirectory()
         if(repo == ''):
             messagebox.showinfo("warning!","Please enter your github account !")
             root3.destroy()
@@ -47,7 +50,7 @@ def openGithubaccount():
             entry_set_account.insert(0,repo)
             root3.destroy()
             os.system('git init')
-            os.system('git remote add origin ' + real_github_account)
+            os.system('git remote add user_repo ' + real_github_account)
             print(real_github_account)
 
     button_set_account = Button(root3, text='Set', padx=10, pady=10, command=get_account)
@@ -61,11 +64,6 @@ sexType = 1
 def saySomething():
     global modeValue
     global sexType
-    global folder_path
-    if(folder_path == ''):
-        setDirectory()
-    else:
-        os.chdir(folder_path)
     if(modeValue == 1):
         recognize('google', sexType)
     else:
@@ -79,12 +77,12 @@ def setAccount():
 
 label0 = Label(root, text='   ')
 label0.grid(row=0, column=0)
-# label1 = Label(root, text='   ')
-# label1.grid(row=0, column=1, pady=20)
+label1 = Label(root, text='   ')
+label1.grid(row=0, column=1, pady=20)
 
-directory_image = ImageTk.PhotoImage(Image.open("directory.png"))
-button_set_directory = Button(root, image=directory_image,padx=3, pady=3, command= setDirectory)
-button_set_directory.grid(row=0, column=1)
+# directory_image = ImageTk.PhotoImage(Image.open("directory.png"))
+# button_set_directory = Button(root, image=directory_image,padx=3, pady=3, command= setDirectory)
+# button_set_directory.grid(row=0, column=1)
 
 
 entry_set_account = Entry(root, width=50)
