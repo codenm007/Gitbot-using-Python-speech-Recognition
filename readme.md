@@ -35,6 +35,9 @@
 
 ____
 
+###  Updated ui with help commands
+![homepage](./screenshots/updatedui.jpg)
+
 ####        Homepage
 ![homepage](./screenshots/home.jpeg)
 
